@@ -22,8 +22,8 @@ def main():
 
     dirpath = args.output_dir
     os.makedirs(dirpath, exist_ok=True)
-    game.to_pydot().write_raw(os.path.join(dirpath, "input_game.dot"))
-    game.to_pydot().write_png(os.path.join(dirpath, "input_game.png"))
+    game.to_pydot().write_raw(os.path.join(dirpath, "input_game.dot"), encoding="utf8")
+    game.to_pydot().write_png(os.path.join(dirpath, "input_game.png"), encoding="utf8")
     if args.verbose:
         print("Input game successfully visualized.")
         print("Starting epistemic unfolding...")
@@ -161,7 +161,7 @@ def _game_to_dot(locations, initial_location_index, transitions, dirpath):
         graph.add_edge(pydot.Edge(from_i, to_i, label=actions_label))
     graph.add_node(pydot.Node("hidden_initial", shape="none", label=""))
     graph.add_edge(pydot.Edge("hidden_initial", initial_location_index))
-    graph.write_raw(os.path.join(dirpath, "unfolded_game.dot"))
+    graph.write_raw(os.path.join(dirpath, "unfolded_game.dot"), encoding="utf8")
 
 
 def _model_to_dot(model, filepath):
@@ -176,7 +176,7 @@ def _model_to_dot(model, filepath):
             if u == v:
                 continue
             graph.add_edge(pydot.Edge(u, v, style=style, color=color))
-    graph.write_png(filepath)
+    graph.write_png(filepath, encoding="utf8")
 
 
 @contextmanager

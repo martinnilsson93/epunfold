@@ -268,7 +268,7 @@ class DistributedGame:
 
 def load_game(filepath):
     """Return a distributed game described by a text file."""
-    with open(filepath, "r") as f:
+    with open(filepath, "r", encoding="utf8") as f:
         lines = (line.strip() for line in f)
         actions_table = _read_actions(lines)
         locations = _read_locations(lines)
