@@ -1,13 +1,14 @@
-#!/usr/bin/env python
-from distutils.core import setup, Extension
+from setuptools import Extension, find_packages, setup
 from Cython.Build import cythonize
 
-extension = Extension(
-           "homsearch_interface",                 # module name
-           sources=["homsearch_interface.pyx", "homsearch_lib.cpp"],  # source files
-           language="c++",             # generate C++ code
+setup(
+    packages = find_packages(),
+    ext_modules = cythonize([
+        Extension(
+           "homsearch.homsearch_interface",
+           sources=["homsearch/homsearch_interface.pyx", "homsearch/homsearch_lib.cpp"],
+           language="c++",
            extra_compile_args=['-std=c++11'],
-           )
-    
-
-setup(ext_modules = cythonize(extension))
+        )
+    ])
+)

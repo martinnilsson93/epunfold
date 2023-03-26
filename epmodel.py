@@ -5,6 +5,7 @@ Classes:
 
 """
 from collections import defaultdict
+from contextlib import contextmanager
 import itertools
 import sys
 
@@ -348,14 +349,16 @@ def _partition_preserving_maps(maps, partition):
 
 def _retractions(graph):
     """Return the retractions of a graph."""
-    try:
-        import homsearch
-    except ImportError:
-        print('ERROR: could not import the homsearch extension. it is likely that the extension was not built properly', file=sys.stderr)
-        raise
+    # path hack to fix importing from subfolder: otherwise transitive imports break...
+    with _add_path("./homsearch"):
+        try:
+            import homsearch.homsearch
+        except ImportError:
+            print('ERROR: could not import the homsearch extension. it is likely that the extension was not built properly', file=sys.stderr)
+            raise
     return [
         {k: v for (k, v) in retraction.items() if k != v}
-        for retraction in homsearch.find_retracts(graph)
+        for retraction in homsearch.homsearch.find_retracts(graph)
     ]
 
 
@@ -383,3 +386,14 @@ def _is_partition(classes, elements):
             classed_elements.add(element)
     elements = set(elements)
     return all(classed_element in elements for classed_element in classed_elements)
+
+@contextmanager
+def _add_path(dir):
+    sys.path.append(dir)
+    try:
+        yield
+    finally:
+        try:
+            sys.path.remove(dir)
+        except ValueError:
+            pass

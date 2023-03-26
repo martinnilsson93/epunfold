@@ -1,0 +1,2 @@
+include homsearch/homsearch_interface.pyx
+include homsearch/homsearch_lib.h

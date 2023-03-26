@@ -1,6 +1,5 @@
-# distutils: language = c++
-# distutils: sources = homsearch_lib.cpp
-
+# Copyright (c) 2023 Martin Nilsson
+#
 # Copyright (c) 2015 Tomas Gavenciak <gavento@ucw.cz>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy

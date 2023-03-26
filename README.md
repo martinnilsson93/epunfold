@@ -16,19 +16,23 @@ dot -Tpng graph.dot -o graph.png
 
 ### Install
 
-Navigate to the `epunfold` folder. First, install the prerequisites given in `requirements.txt`.
+First, navigate to the `epunfold` folder. After installing the dependencies and building the extension, `main.py` should be ready to run.
+
+#### Install dependencies
+
+Install the dependencies given in `requirements.txt` with the following command.
 
 ```
 pip install -r requirements.txt
 ```
 
-Then, build the `homsearch` dependency using the makefile.
+#### Build extension
 
 ```
-make
+python3 setup.py build_ext --inplace
 ```
 
-The program, `main.py` should now be able to run using python 3.
+(Building the extension - `homsearch.homsearch_interface` - is only transitively required because of the `homsearch` submodule, which comprises a Cython extension. Unfortunately, building extensions may prove an extreme headache on some setups. It is therefore possible to skip this step, but still run the program, by disabling finding the homomorphic core of the resultant game, by passing `--skip-core` or `-c`. This typically results in prohibitively unwieldy games, but nonetheless finds the complete epistemic unfolding of the input game without having to compile anything.)
 
 ### Usage
 

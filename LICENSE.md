@@ -2,7 +2,7 @@ MIT License
 
 Copyright (c) 2023 Martin Nilsson
 
-Copyright (c) 2015 Tomas Gavenciak <gavento@ucw.cz>
+Copyright (c) 2015 Tomas Gavenciak <gavento@ucw.cz> (`homsearch` subfolder)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
