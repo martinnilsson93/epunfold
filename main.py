@@ -28,7 +28,7 @@ def main():
         print("Input game successfully visualized.")
         print("Starting epistemic unfolding...")
 
-    unfold_fully(game, dirpath, verbose=args.verbose)
+    unfold_fully(game, dirpath, verbose=args.verbose, find_core=not args.skip_core)
     with _cd(dirpath):
         check_call(["dot", "-Tpng", "unfolded_game.dot", "-o", "unfolded_game.png"])
 
@@ -55,10 +55,18 @@ def _parse_cli_args():
         action="store_true",
         help="print the encountered models of the unfolding",
     )
+    argparser.add_argument(
+        "-c",
+        "--skip-core",
+        dest="skip_core",
+        default=False,
+        action="store_true",
+        help="skip finding the homomorphic core of the unfolded game (generally produces unwieldy games)",
+    )
     return argparser.parse_args()
 
 
-def unfold_fully(game, dirpath, verbose=False):
+def unfold_fully(game, dirpath, verbose=False, find_core=True):
     """Fully epistemically unfold the game and save its DOT visualization to file."""
     init_model = EpistemicModel(game)
     if verbose:
@@ -71,7 +79,7 @@ def unfold_fully(game, dirpath, verbose=False):
     todo = deque([(init_model, 0)])
     while len(todo) != 0:
         model, model_i = todo.popleft()
-        successors = model.unfold(True)
+        successors = model.unfold(find_core)
         if verbose:
             _print_model_dequeue(model, successors)
         for next, action_list in successors:

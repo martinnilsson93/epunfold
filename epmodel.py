@@ -6,8 +6,8 @@ Classes:
 """
 from collections import defaultdict
 import itertools
+import sys
 
-import homsearch
 import networkx as nx
 from networkx.algorithms.components import connected_components
 
@@ -348,6 +348,11 @@ def _partition_preserving_maps(maps, partition):
 
 def _retractions(graph):
     """Return the retractions of a graph."""
+    try:
+        import homsearch
+    except ImportError:
+        print('ERROR: could not import the homsearch extension. it is likely that the extension was not built properly', file=sys.stderr)
+        raise
     return [
         {k: v for (k, v) in retraction.items() if k != v}
         for retraction in homsearch.find_retracts(graph)
