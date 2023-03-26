@@ -195,7 +195,7 @@ class DistributedGame:
             out_cnt[from_name] += 1
         for (from_name, to_name), actions in collapsed_moves.items():
             if out_cnt[from_name] == 1:
-                actions_label = "⊥"
+                actions_label = "*"
             else:
                 if self._player_count == 0:
                     action_strs = sorted(action[0] for action in actions)

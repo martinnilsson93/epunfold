@@ -141,7 +141,7 @@ def _game_to_dot(locations, initial_location_index, transitions, dirpath):
         out_cnt[from_i] += 1
     for (from_i, to_i), actions_list in transitions.items():
         if out_cnt[from_i] == 1:
-            actions_label = "⊥"
+            actions_label = "*"
         else:
             action_strs = sorted(
                 [
