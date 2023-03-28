@@ -9,8 +9,8 @@ from subprocess import check_call
 
 import pydot
 
-import distgame
-from epmodel import EpistemicModel
+from . import distgame
+from .epmodel import EpistemicModel
 
 
 def main():
@@ -35,6 +35,7 @@ def main():
 
 def _parse_cli_args():
     argparser = ArgumentParser(
+        prog="epunfold",
         description="Visualize a game and its epistemic unfolding with both DOT files"
         "and png images."
     )

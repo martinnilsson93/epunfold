@@ -1,3 +1,5 @@
+# Copyright (c) 2023 Martin Nilsson
+#
 # Copyright (c) 2015 Tomas Gavenciak <gavento@ucw.cz>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,7 +20,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from homsearch_interface import HomsearchInterface
+from .homsearch_interface import HomsearchInterface
 
 #############################
 # Auxiliary conversion utils

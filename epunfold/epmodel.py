@@ -352,13 +352,13 @@ def _retractions(graph):
     # path hack to fix importing from subfolder: otherwise transitive imports break...
     with _add_path("./homsearch"):
         try:
-            import homsearch.homsearch
+            from .homsearch import homsearch
         except ImportError:
             print('ERROR: could not import the homsearch extension. it is likely that the extension was not built properly', file=sys.stderr)
             raise
     return [
         {k: v for (k, v) in retraction.items() if k != v}
-        for retraction in homsearch.homsearch.find_retracts(graph)
+        for retraction in homsearch.find_retracts(graph)
     ]
 
 

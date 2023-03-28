@@ -1,2 +1,2 @@
-include homsearch/homsearch_interface.pyx
-include homsearch/homsearch_lib.h
+include epunfold/homsearch/homsearch_interface.pyx
+include epunfold/homsearch/homsearch_lib.h
