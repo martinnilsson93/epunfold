@@ -96,7 +96,7 @@ Use the games in the `games` folder as templates or examples of the format expec
 
 * The initial state section defines the initial state by id: `Initial State: <STATE_ID>`. For example, `Initial State: 0`
 
-* The `Observations:` section defines, for each agent, the indistinguishability relation over the states. That is, the equivalence relation such that two states are equivalent iff the agent cannot distinguish between the two. The format is one `|`-separated line per agent of the equivalence classes. Each equivalence class is a comma-separated list of state ids. For example, `2,1|0|3`, wherein the agent cannot distinguish between states `2´ and `1` in a game of four states
+* The `Observations:` section defines, for each agent, the indistinguishability relation over the states. That is, the equivalence relation such that two states are equivalent iff the agent cannot distinguish between the two. The format is one `|`-separated line per agent of the equivalence classes. Each equivalence class is a comma-separated list of state ids. For example, `2,1|0|3`, wherein the agent cannot distinguish between states `2` and `1` in a game of four states
 
 * The `Transitions:` section lists all transitions of the game as `<START_STATE_ID> <JOINT_ACTION_TUPLE> <DESTINATION_STATE_ID>`. That is, given a current state, if the following joint action (action per agent on the same turn) is performed, the following state is reached. Actions are identified by the zero-based index of its order of occurance in the alphabet section, across all agents. For example, in a game with two agents with three actions each, `0 1,3 1` is the transition such that, if the current state is `0`, and the first agent performs its second action and the second agent performs its first action, the game will transition to state `1`
 
@@ -106,4 +106,4 @@ Use the games in the `games` folder as templates or examples of the format expec
 
 ## Acknowledgments
 
-* **Tomas Gavenciak** - *author of [homsearch](https://github.com/gavento/homsearch/), which is used here with some modification for finding the homomorphic cores of graphs* - gavento@ucw.cz
+* **Tomas Gavenciak** - *author of [homsearch](https://github.com/gavento/homsearch/), which is used here with some modification for finding the homomorphic core of the resultant graph* - gavento@ucw.cz
